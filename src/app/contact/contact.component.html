@@ -1,0 +1,67 @@
+<div class="contact-container">
+  <h2>📖 Contact Book</h2>
+
+  <!-- Contact Form -->
+  <form (ngSubmit)="saveContact()" class="contact-form">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="contactForm.name"
+        name="name"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        [(ngModel)]="contactForm.email"
+        name="email"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input
+        type="text"
+        id="phone"
+        [(ngModel)]="contactForm.phone"
+        name="phone"
+        required
+      />
+    </div>
+
+    <div class="btn-group">
+      <button type="submit" class="btn-primary">
+        {{ isEditing ? "Update Contact" : "Add Contact" }}
+      </button>
+      <button type="button" class="btn-secondary" (click)="resetForm()">
+        Reset
+      </button>
+    </div>
+  </form>
+
+  <!-- Contact List -->
+  <h3>📋 Your Contacts</h3>
+  <div class="contact-list">
+    <div class="contact-card" *ngFor="let contact of contacts">
+      <div class="contact-info">
+        <h4>{{ contact.name }}</h4>
+        <p>Email: {{ contact.email }}</p>
+        <p>Phone: {{ contact.phone }}</p>
+      </div>
+
+      <div class="contact-actions">
+        <button (click)="editContact(contact)" class="btn-edit">Edit</button>
+        <button (click)="deleteContact(contact.id)" class="btn-delete">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
