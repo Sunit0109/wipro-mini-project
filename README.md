@@ -1,1 +1,0 @@
-# wipro-mini-project
